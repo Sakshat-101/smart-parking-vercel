@@ -3,9 +3,106 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>IoT Smart Parking System</title>
+  <meta name="theme-color" content="#667eea" />
+  <meta name="description" content="IoT-enabled Smart Parking System with real-time booking, automatic billing, and intelligent parking management." />
+  <meta name="keywords" content="smart parking, IoT parking, parking system, parking management, automated parking" />
+  <meta name="author" content="Sakshat" />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Smart Parking System" />
+  <meta property="og:description" content="IoT-enabled Smart Parking Management System" />
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:title" content="Smart Parking System" />
+  <meta property="twitter:description" content="IoT-enabled Smart Parking Management System" />
+  
+  <title>Smart Parking System - IoT Enabled</title>
+  
+  <!-- Inline favicon as data URI -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23667eea'/><text x='50' y='70' font-size='60' text-anchor='middle' fill='white'>🚗</text></svg>" />
+  
+  <style>
+    /* Loading screen styles */
+    #loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    
+    #loading-screen.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+    
+    .loading-icon {
+      font-size: 5rem;
+      animation: bounce 1s infinite;
+    }
+    
+    .loading-text {
+      color: white;
+      font-size: 1.5rem;
+      margin-top: 1rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-top-color: white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin-top: 2rem;
+    }
+    
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+    
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
 </head>
 <body>
+  <!-- Loading Screen -->
+  <div id="loading-screen">
+    <div class="loading-icon">🚗</div>
+    <div class="loading-text">Loading Smart Parking System...</div>
+    <div class="spinner"></div>
+  </div>
+  
+  <!-- React Root -->
   <div id="root"></div>
+  
+  <script>
+    // Hide loading screen when app loads
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        document.getElementById('loading-screen').classList.add('hidden');
+        setTimeout(function() {
+          document.getElementById('loading-screen').style.display = 'none';
+        }, 500);
+      }, 1000);
+    });
+    
+    // Error handling
+    window.addEventListener('error', function(e) {
+      console.error('Application Error:', e.error);
+    });
+  </script>
 </body>
 </html>
